@@ -50,18 +50,12 @@ const http = require("http");
 // );
 
 //only once file reads syncgronously better performance and light
+
 const data = fs.readFileSync("./dev-data/data.json", "utf-8");
 const productData = JSON.parse(data);
 console.log(productData);
 
 console.log("\n");
-
-// console.log(productData);
-
-// const data = fs.readFile("./dev-data/data.json", "utf-8", (err, data) => {
-//   const productData = JSON.parse(data);
-//   console.log(productData);
-// });
 
 // // ♦️ SERVER
 // ➡️ create a server
