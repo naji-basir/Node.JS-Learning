@@ -51,12 +51,6 @@ const http = require("http");
 
 //only once file reads syncgronously better performance and light
 
-const data = fs.readFileSync("./dev-data/data.json", "utf-8");
-const productData = JSON.parse(data);
-console.log(productData);
-
-console.log("\n");
-
 // // ♦️ SERVER
 // ➡️ create a server
 const server = http.createServer((req, res) => {
@@ -81,6 +75,7 @@ const server = http.createServer((req, res) => {
       "my-own-header": "naji",
     });
     res.end(data);
+
     // 404 - Not Found
   } else {
     res.writeHead(404, {
