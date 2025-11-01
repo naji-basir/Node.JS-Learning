@@ -3,7 +3,6 @@ const url = require('url');
 const http = require('http');
 
 const replaceTemplate = require('./modules/replaceTemplate');
-require('./');
 
 //♦️FILE
 
@@ -42,7 +41,7 @@ const server = http.createServer((req, res) => {
   if (pathname === '/' || pathname === '/overview') {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     const cardsHtml = dataObj.map((el) => replaceTemplate(tempCard, el)).join('');
-    const output = tempOverview.replace('%PRODUCT_CARDS%', cardsHtml);
+    const output = tempOverview.replace('{%PRODUCT_CARDS%}', cardsHtml);
     res.end(output);
 
     // console.log(cardsHtml);
