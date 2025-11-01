@@ -2,36 +2,6 @@ const fs = require("fs");
 const url = require("url");
 const http = require("http");
 
-//♦️FILE -- synchronous way -- blocking
-// read file
-// const textIn = fs.readFileSync("./txt/input.txt", "utf-8");
-// console.log(textIn);
-
-//write file
-// const textOut = `This is what we know about about Avacado: ${textIn}. created on ${Date.now()} by Basir Naji`;
-// fs.writeFileSync("./txt/output.txt", textOut);
-
-// console.log("file written");
-
-// //♦️FILE -- asynchronous way -- non-blocking
-// fs.readFile("./txt/start.txt", "utf-8", (err, data) => {
-//   console.log(data);
-// });
-// console.log("first");
-
-//♦️SERVER
-// const http = require("http");
-// const ip = "127.0.0.1";
-// const port = 8000;
-// const server = http.createServer((req, res) => {
-//   console.log(req);
-//   res.end("Hello from server!");
-// });
-
-// server.listen(port, ip, () => {
-//   console.log("Listening on port 8000 ");
-// });
-
 //♦️FILE
 
 // //Blocking, synchronous way
@@ -53,6 +23,23 @@ const http = require("http");
 
 // // ♦️ SERVER
 // ➡️ create a server
+
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
+const dataObj = JSON.parse(data);
+
+const tempOverview = fs.readFileSync(
+  `${__dirname}/templates/template-overview.html`,
+  "utf-8"
+);
+const tempProduct = fs.readFileSync(
+  `${__dirname}/templates/template-product.html`,
+  "utf-8"
+);
+const tempCard = fs.readFileSync(
+  `${__dirname}/templates/template-card.html`,
+  "utf-8"
+);
+
 const server = http.createServer((req, res) => {
   console.log("👉 New request:", req.url); // log every request
 
@@ -61,12 +48,14 @@ const server = http.createServer((req, res) => {
   // Overview
   if (pathName === "/" || pathName === "/overview") {
     res.writeHead(200, { "Content-Type": "text/html" });
-    res.end("<h1>This is the OVERVIEW page.</h1>");
+    // res.end("<h1>This is the OVERVIEW page.</h1>");
+    res.end(tempOverview);
 
     // Product
   } else if (pathName === "/product") {
     res.writeHead(200, { "Content-Type": "text/html" });
-    res.end("<h1>This is the PRODUCT page.</h1>");
+    // res.end("<h1>This is the PRODUCT page.</h1>");
+    res.end(tempProduct);
 
     //Read The Data API
   } else if (pathName === "/api") {
