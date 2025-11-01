@@ -1,0 +1,20 @@
+{
+  "name": "node-farm",
+  "version": "1.0.0",
+  "description": "Learning Node.JS",
+  "homepage": "https://github.com/naji-basir/Node.JS-Learning#readme",
+  "bugs": {
+    "url": "https://github.com/naji-basir/Node.JS-Learning/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naji-basir/Node.JS-Learning.git"
+  },
+  "license": "ISC",
+  "author": "Basir Naji",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
